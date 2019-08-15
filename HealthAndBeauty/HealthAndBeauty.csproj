@@ -16,4 +16,10 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\HealthAndBeauty.BL\HealthAndBeauty.BL.csproj" />
+    <ProjectReference Include="..\HealthAndBeauty.DAL\HealthAndBeauty.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
