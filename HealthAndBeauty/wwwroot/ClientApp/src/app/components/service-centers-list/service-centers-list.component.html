@@ -1,1 +1,5 @@
-<p>service-centers works!</p>
+<ul class="service-centers-list">
+  <li *ngFor="let serviceCenter of serviceCentersList">
+    <app-service-center [serviceCenter]="serviceCenter"></app-service-center>
+  </li>
+</ul>
