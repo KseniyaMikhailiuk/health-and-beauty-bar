@@ -3,4 +3,6 @@ export default class ServiceCenter {
   name: string;
   imageUrl: string;
   address: string;
+  distance: number;
+  rating: number;
 }

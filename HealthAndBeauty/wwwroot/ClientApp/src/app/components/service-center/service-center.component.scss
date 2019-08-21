@@ -1,4 +1,18 @@
+@import "../../colors.scss";
+@import '~ngx-bar-rating/themes/br-stars-theme';
+
 .service-centers-list-detail {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: $fog;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 40%;
+  }
+
+  &__description{
+    width: 60%;
+  }
 }
