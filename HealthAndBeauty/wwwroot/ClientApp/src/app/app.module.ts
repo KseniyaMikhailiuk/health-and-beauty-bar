@@ -9,7 +9,9 @@ import { ServiceCentersComponent } from './pages/service-centers/service-centers
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material';
-import { BarRatingModule } from "ngx-bar-rating";
+import { BarRatingModule } from 'ngx-bar-rating';
+import { ListFiltersBarComponent } from './components/list-filters-bar/list-filters-bar.component';
+import { ListFiltersComponent } from './components/list-filters/list-filters.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BarRatingModule } from "ngx-bar-rating";
     ServiceCentersListComponent,
     ServiceCenterComponent,
     ServiceCentersComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListFiltersBarComponent,
+    ListFiltersComponent
   ],
   imports: [
     BrowserModule,

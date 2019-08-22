@@ -1,0 +1,13 @@
+@import "../../colors.scss";
+
+.list-filters-bar {
+  display: flex;
+  width:80%;
+  margin: auto;
+  justify-content: space-around;
+  height: 30px;
+  border: 1px $electricViolet solid;
+  align-items: center;
+  margin-bottom: 10px;
+  color: $electricViolet;
+}
