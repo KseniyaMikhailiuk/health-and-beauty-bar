@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { ListFiltersBarComponent } from './components/list-filters-bar/list-filters-bar.component';
 import { ListFiltersComponent } from './components/list-filters/list-filters.component';
+import {FullscreenOverlayContainer, OverlayContainer, OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { ListFiltersComponent } from './components/list-filters/list-filters.com
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    BarRatingModule
+    BarRatingModule,
+    OverlayModule
   ],
-  providers: [],
+  entryComponents: [ListFiltersComponent],
+  providers: [{ provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

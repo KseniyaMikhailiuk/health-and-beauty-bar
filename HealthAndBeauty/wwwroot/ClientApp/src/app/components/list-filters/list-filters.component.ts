@@ -8,7 +8,9 @@ import ServiceCategory from '../../models/service-category';
 })
 export class ListFiltersComponent implements OnInit {
 
-  @Input() filterCategories: ServiceCategory[];
+  @Input() filterCategories: ServiceCategory[
+
+    ];
 
   constructor() { }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ComponentPortal} from '@angular/cdk/portal';
+import {Overlay} from '@angular/cdk/overlay';
+import {ListFiltersComponent} from '../list-filters/list-filters.component';
 
 @Component({
   selector: 'app-list-filters-bar',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListFiltersBarComponent implements OnInit {
 
-  constructor() { }
+  constructor( private overlay: Overlay) { }
 
   ngOnInit() {
+  }
+
+  onFilterClick(): void {
+    const overlayRef = this.overlay.create();
+    const userProfilePortal = new ComponentPortal(ListFiltersComponent);
+    overlayRef.attach(userProfilePortal);
   }
 
 }
