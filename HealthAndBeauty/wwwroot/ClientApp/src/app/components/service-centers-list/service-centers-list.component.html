@@ -1,5 +1,22 @@
+<section class="list-filters-bar">
+  <div>
+    Sort
+  </div>
+  <div (click)="showFilters()">
+    Filter
+  </div>
+</section>
+
 <ul class="service-centers-list">
   <li *ngFor="let serviceCenter of serviceCentersList">
-    <app-service-center [serviceCenter]="serviceCenter"></app-service-center>
+    <article class="service-centers-list-detail">
+      <img src="{{serviceCenter.imageUrl}}"/>
+      <section class="service-centers-list-detail__desctiption">
+        <h4>{{serviceCenter.name}}</h4>
+        <p>{{serviceCenter.address}}</p>
+        <p>{{serviceCenter.distance}} km</p>
+        <bar-rating rate="{{serviceCenter.rating}}" [max]="5"></bar-rating>
+      </section>
+    </article>
   </li>
 </ul>

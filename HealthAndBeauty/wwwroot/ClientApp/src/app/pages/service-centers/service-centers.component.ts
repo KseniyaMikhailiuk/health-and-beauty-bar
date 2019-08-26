@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceCenterService } from '../../services/service-center.service';
 import ServiceCenter from '../../models/service-center';
+import {CategoriesService} from '../../services/categories.service';
+import ServiceCategory from '../../models/service-category';
 
 @Component({
   selector: 'app-service-centers',
@@ -11,13 +13,16 @@ export class ServiceCentersComponent implements OnInit {
 
   serviceCenters: ServiceCenter[];
 
-  constructor(private service: ServiceCenterService) { }
+  constructor(
+    private centersService: ServiceCenterService
+  ) { }
 
   ngOnInit() {
     this.getServiceCenters();
   }
 
   getServiceCenters(): void {
-    this.service.getServiceCenters().subscribe(serviceCenters => this.serviceCenters = serviceCenters);
+    this.centersService.getServiceCenters().subscribe(serviceCenters => this.serviceCenters = serviceCenters);
   }
+
 }

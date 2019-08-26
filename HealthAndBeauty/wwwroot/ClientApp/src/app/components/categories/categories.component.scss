@@ -1,0 +1,26 @@
+:host{
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+
+  .filters-list {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    .filter-item {
+      display:flex;
+      height: 30px;
+      align-items: center;
+      border-bottom: 0.5px gray solid;
+      font-size: 15px;
+      font-family: Open Sans,sans-serif;
+    }
+  }
+  .go-back-button {
+    width: 100%;
+    background-color: white;
+    margin: 20px 0 0 10px;
+  }
+}
+
+

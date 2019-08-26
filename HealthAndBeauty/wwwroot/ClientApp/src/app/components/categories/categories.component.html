@@ -1,0 +1,14 @@
+<mat-icon class="go-back-button">chevron_left</mat-icon>
+
+<ul class="filters-list">
+  <li *ngFor="let category of categories">
+    <mat-expansion-panel class="filter-item">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{category.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-services [services]="category.services"></app-services>
+    </mat-expansion-panel>
+  </li>
+</ul>
