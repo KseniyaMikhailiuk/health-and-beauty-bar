@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import ServiceCategory from '../../models/service-category';
 import {CategoriesService} from '../../services/categories.service';
-import {OverlayService} from '../../services/overlay.service';
+import { ServiceCenterService } from 'src/app/services/service-center.service';
+import Service from 'src/app/models/service';
 
 @Component({
   selector: 'app-list-filters',
@@ -11,10 +12,14 @@ import {OverlayService} from '../../services/overlay.service';
 export class CategoriesComponent implements OnInit {
 
   @Input() categories: ServiceCategory[];
+  @Input() services: Service[];
+
+  data: any[];
+
 
   constructor(
     private categoriesService: CategoriesService,
-    private overlayService: OverlayService
+    private serviceCentersService: ServiceCenterService
   ) { }
 
   ngOnInit() {
@@ -23,5 +28,9 @@ export class CategoriesComponent implements OnInit {
 
   getCategories(): void {
     this.categoriesService.getCategories().subscribe(categories => this.categories = categories);
+  }
+
+  showServices(id: number): void {
+    this.services = this.categories.find(category => category.id === id).services;
   }
 }

@@ -1,12 +1,11 @@
 :host{
   background-color: white;
-  width: 100vw;
-  height: 100vh;
-
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   .filters-list {
-    width: 100vw;
-    height: 100vh;
     padding: 20px;
+    margin-bottom: auto;
     .filter-item {
       display:flex;
       height: 30px;
@@ -16,11 +15,18 @@
       font-family: Open Sans,sans-serif;
     }
   }
-  .go-back-button {
-    width: 100%;
-    background-color: white;
-    margin: 20px 0 0 10px;
+
+  ::ng-deep {
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+      background-color: violet;
+    }
   }
 }
 
+.action-buttons {
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+}
 

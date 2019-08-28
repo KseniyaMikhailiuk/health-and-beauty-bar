@@ -24,5 +24,9 @@ export class ServiceCenterService {
     return of(this.serviceCenters);
   }
 
+  getFilteredLServiceCenters(filteres): Observable<ServiceCenter[]> {
+    return of(this.serviceCenters);
+  }
+
   constructor() { }
 }

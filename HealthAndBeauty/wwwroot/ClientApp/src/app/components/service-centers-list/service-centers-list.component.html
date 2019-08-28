@@ -1,8 +1,8 @@
 <section class="list-filters-bar">
-  <div>
+  <div class="list-filters-button">
     Sort
   </div>
-  <div (click)="showFilters()">
+  <div class="list-filters-button" (click)="showFilters()">
     Filter
   </div>
 </section>
@@ -15,7 +15,6 @@
         <h4>{{serviceCenter.name}}</h4>
         <p>{{serviceCenter.address}}</p>
         <p>{{serviceCenter.distance}} km</p>
-        <bar-rating rate="{{serviceCenter.rating}}" [max]="5"></bar-rating>
       </section>
     </article>
   </li>

@@ -8,11 +8,10 @@ import { ServiceCentersComponent } from './pages/service-centers/service-centers
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { BarRatingModule } from 'ngx-bar-rating';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CategoriesComponent } from './components/categories/categories.component';
-import {FullscreenOverlayContainer, OverlayContainer, OverlayModule} from '@angular/cdk/overlay';
 import { ServicesComponent } from './components/services/services.component';
+import { CustomOverlayComponent } from './components/custom-overlay/custom-overlay.component';
 
 @NgModule({
   declarations: [
@@ -21,19 +20,17 @@ import { ServicesComponent } from './components/services/services.component';
     ServiceCentersComponent,
     HeaderComponent,
     CategoriesComponent,
-    ServicesComponent
+    ServicesComponent,
+    CustomOverlayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    BarRatingModule,
-    OverlayModule
+    MatCheckboxModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [CategoriesComponent],
-  providers: [{ provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

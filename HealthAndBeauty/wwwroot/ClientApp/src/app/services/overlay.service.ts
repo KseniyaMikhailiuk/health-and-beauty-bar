@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import {ComponentType, Overlay, OverlayRef} from '@angular/cdk/overlay';
-import {ComponentPortal} from '@angular/cdk/portal';
+import { Injectable, Type } from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import { OverlayParams } from '../models/overlay-params';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OverlayService {
 
-  private currentOverlay: OverlayRef
+  private currentOverlay = new BehaviorSubject<OverlayParams>(null);
 
-  constructor(private overlay: Overlay) { }
-
-  public openOverlay(overlayComponent: ComponentType<object>): void {
-    this.currentOverlay = this.overlay.create();
-    const filtersOverlay = new ComponentPortal(overlayComponent);
-    this.currentOverlay.attach(filtersOverlay);
+  get overlay() {
+    return this.currentOverlay.asObservable();
   }
 
-  public closeOverlay() {
-    this.currentOverlay.detach();
+  constructor() { }
+
+  public openOverlay(componentType: Type<any>): Observable<any> {
+    const result$ = new Subject<any>();
+    this.currentOverlay.next({ componentType, returnData$: result$ });
+    return result$;
   }
 }

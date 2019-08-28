@@ -8,7 +8,8 @@ import {Observable, of} from 'rxjs';
 export class CategoriesService {
 
   private categories: ServiceCategory[] = [
-    { id: 11, name: 'Dr Nice', services: [    { id: 12, name: 'Narco' },
+    { id: 11, name: 'Dr Nice', services: [
+        { id: 12, name: 'Narco' },
         { id: 13, name: 'Bombasto' },
         { id: 14, name: 'Celeritas' },
         { id: 15, name: 'Magneta' },

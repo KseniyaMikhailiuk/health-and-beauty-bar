@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceCenterService } from '../../services/service-center.service';
 import ServiceCenter from '../../models/service-center';
-import {CategoriesService} from '../../services/categories.service';
-import ServiceCategory from '../../models/service-category';
 
 @Component({
   selector: 'app-service-centers',
