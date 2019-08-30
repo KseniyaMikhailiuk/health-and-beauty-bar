@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import ServiceCategory from '../../models/service-category';
+import Category from '../../models/category';
 import {CategoriesService} from '../../services/categories.service';
 import { ServiceCenterService } from 'src/app/services/service-center.service';
 import Service from 'src/app/models/service';
@@ -11,15 +11,14 @@ import Service from 'src/app/models/service';
 })
 export class CategoriesComponent implements OnInit {
 
-  @Input() categories: ServiceCategory[];
+  @Input() categories: Category[];
   @Input() services: Service[];
 
-  data: any[];
+  data: any[] = [];
 
 
   constructor(
-    private categoriesService: CategoriesService,
-    private serviceCentersService: ServiceCenterService
+    private categoriesService: CategoriesService
   ) { }
 
   ngOnInit() {
@@ -32,5 +31,13 @@ export class CategoriesComponent implements OnInit {
 
   showServices(id: number): void {
     this.services = this.categories.find(category => category.id === id).services;
+  }
+
+  manageServiceFilter(event: any, id: number) {
+    if (event.checked) {
+      this.data.push(id);
+    } else {
+      this.data = this.data.filter(item => item === id);
+    }
   }
 }

@@ -1,6 +1,6 @@
 <ul class="filters-list" *ngIf="services; else categoriesList">
   <li class="filter-item" *ngFor="let service of services">
-      <mat-checkbox [color>{{service.name}}</mat-checkbox>
+      <mat-checkbox (change)="manageServiceFilter($event, service.id)">{{service.name}}</mat-checkbox>
   </li>
 </ul>
 

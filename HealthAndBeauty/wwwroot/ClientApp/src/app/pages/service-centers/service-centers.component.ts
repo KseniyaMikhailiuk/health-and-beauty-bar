@@ -16,11 +16,14 @@ export class ServiceCentersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getServiceCenters();
+    this.getCenters();
   }
 
-  getServiceCenters(): void {
-    this.centersService.getServiceCenters().subscribe(serviceCenters => this.serviceCenters = serviceCenters);
+  getCenters(): void {
+    this.centersService.getCenters()
+    .subscribe(serviceCenters =>
+      this.serviceCenters = serviceCenters
+    );
   }
 
 }

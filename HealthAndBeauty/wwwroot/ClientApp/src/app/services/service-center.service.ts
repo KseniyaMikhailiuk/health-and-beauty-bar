@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+
 import ServiceCenter from '../models/service-center';
+
+const routes = {
+  getCenters: () => 'api/centers/'
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceCenterService {
+
+  constructor(private httpClient: HttpClient) { }
 
   private serviceCenters: ServiceCenter[] = [
     { id: 11, name: 'Dr Nice', imageUrl: 'https://picsum.photos/id/237/500/300', address: 'пр-т. Победителей 84, Минск', distance: 1, rating: 4.5 },
@@ -20,13 +29,11 @@ export class ServiceCenterService {
     { id: 20, name: 'Tornado', imageUrl: 'https://picsum.photos/id/237/500/300', address: 'пр-т. Победителей 84, Минск', distance: 5, rating: 4.5 }
   ];
 
-  getServiceCenters(): Observable<ServiceCenter[]> {
-    return of(this.serviceCenters);
+  getCenters(): Observable<ServiceCenter[]> {
+    return this.httpClient.get<ServiceCenter[]>(routes.getCenters());
   }
 
   getFilteredLServiceCenters(filteres): Observable<ServiceCenter[]> {
     return of(this.serviceCenters);
   }
-
-  constructor() { }
 }

@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CustomOverlayComponent } from './components/custom-overlay/custom-overlay.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CustomOverlayComponent } from './components/custom-overlay/custom-overl
     AppRoutingModule,
     MatIconModule,
     MatCheckboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   entryComponents: [CategoriesComponent],
   bootstrap: [AppComponent]
