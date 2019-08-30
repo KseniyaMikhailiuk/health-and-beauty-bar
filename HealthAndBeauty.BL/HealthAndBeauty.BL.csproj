@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="Mapster" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HealthAndBeauty.DAL\HealthAndBeauty.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

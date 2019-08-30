@@ -1,11 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace HealthAndBeauty.DAL
 {
     public class DALSettings
     {
         private readonly IConfiguration _configuration;
-        public string ConnectionString => _configuration.GetConnectionString("DefaultConnection");
+
+        public string DefaultConnection => _configuration.GetConnectionString(nameof(DefaultConnection));
+
 
         public DALSettings(IConfiguration configuration)
         {

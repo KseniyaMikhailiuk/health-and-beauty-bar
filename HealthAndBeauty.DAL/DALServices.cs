@@ -1,4 +1,6 @@
-﻿using HealthAndBeauty.DB;
+using HealthAndBeauty.DAL.Contracts;
+using HealthAndBeauty.DAL.Repositories;
+using HealthAndBeauty.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +11,12 @@ namespace HealthAndBeauty.DAL
     {
         public static void AddServices(IServiceCollection services, IConfiguration configuration)
         {
-            DALSettings settings = new DALSettings(configuration);
-            services.AddDbContext<HBContext>(options =>
-                options.UseSqlServer(settings.ConnectionString, x => x.MigrationsHistoryTable("MigrationHistory", "dbo"))
+            services.AddScoped<ICenterRepository, CenterRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            
+            var settings = new DALSettings(configuration);
+            services.AddDbContext<HBContext>(options => 
+                options.UseSqlServer(settings.DefaultConnection, x => x.MigrationsHistoryTable("Umwa_MigrationHistory", "dbo"))
             );
 
             UpdateDatabase(services);

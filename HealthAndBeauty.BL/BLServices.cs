@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using HealthAndBeauty.BL.Contracts;
+using HealthAndBeauty.BL.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HealthAndBeauty.BL
 {
@@ -6,7 +8,8 @@ namespace HealthAndBeauty.BL
     {
         public static void AddServices(IServiceCollection services)
         {
-
+            services.AddScoped<ICenterService, CenterService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }
