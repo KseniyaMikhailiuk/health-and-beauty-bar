@@ -6,8 +6,19 @@
   display: flex;
   align-items: center;
   padding: 20px;
+}
 
-  &__menu-button{
 
-  }
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+  width: 50vw;
+  height: 100vh;
+  position: absolute;
 }

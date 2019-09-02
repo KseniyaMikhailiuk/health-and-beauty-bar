@@ -1,4 +1,8 @@
+<mat-drawer #drawer class="sidenav" mode="side">
+  <a routerLink="/admin/centers/1">admin</a>
+</mat-drawer>
+
 <section class="header">
-  <mat-icon class="header__menu-button">menu</mat-icon>
+  <mat-icon class="header__menu-button" (click)="drawer.toggle()">menu</mat-icon>
   <h3>H&B</h3>
 </section>

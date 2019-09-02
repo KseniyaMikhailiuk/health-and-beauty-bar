@@ -1,7 +1,7 @@
-export default class ServiceCenter {
+export default class Center {
   id: number;
   name: string;
-  imageUrl: string;
+  mainImageUrl: string;
   address: string;
   distance: number;
   rating: number;

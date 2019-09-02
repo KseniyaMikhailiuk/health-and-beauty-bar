@@ -8,6 +8,8 @@ namespace HealthAndBeauty.DB.Entities
 
         public string Name { get; set; }
 
+        public string MainImageUrl { get; set; }
+
         public int CenterTypeId { get; set; }
 
         public CenterType CenterType { get; set; }

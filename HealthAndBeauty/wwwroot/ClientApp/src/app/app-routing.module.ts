@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ServiceCentersComponent} from './pages/service-centers/service-centers.component';
+import {CentersComponent} from './pages/centers/centers.component';
 
 
 const routes: Routes = [
-  { path: 'service-centers', component: ServiceCentersComponent}
+  {
+    path: '',
+    redirectTo: 'service-centers',
+    pathMatch: 'full'
+  },
+  { path: 'service-centers', component: CentersComponent},
+  { path: 'admin', loadChildren: './pages/center-admin/center-admin.module#CenterAdminModule'}
 ];
 
 @NgModule({

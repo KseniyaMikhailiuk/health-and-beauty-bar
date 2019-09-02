@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import Category from '../../models/category';
 import {CategoriesService} from '../../services/categories.service';
-import { ServiceCenterService } from 'src/app/services/service-center.service';
+import { CenterService } from 'src/app/services/center.service';
 import Service from 'src/app/models/service';
 
 @Component({

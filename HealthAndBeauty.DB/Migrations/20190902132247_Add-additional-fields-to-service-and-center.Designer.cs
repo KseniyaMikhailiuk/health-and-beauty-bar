@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Umwa.DB;
 
 namespace HealthAndBeauty.DB.Migrations
 {
     [DbContext(typeof(HBContext))]
-    partial class HBContextModelSnapshot : ModelSnapshot
+    [Migration("20190902132247_Add-additional-fields-to-service-and-center")]
+    partial class Addadditionalfieldstoserviceandcenter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

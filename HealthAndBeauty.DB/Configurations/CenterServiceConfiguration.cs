@@ -1,9 +1,6 @@
 ﻿using HealthAndBeauty.DB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HealthAndBeauty.DB.Configurations
 {
@@ -11,8 +8,10 @@ namespace HealthAndBeauty.DB.Configurations
     {
         public void Configure(EntityTypeBuilder<CenterService> builder)
         {
-            builder.HasKey(centerService => new { centerService.ServiceId, centerService.CenterId });
+            builder.HasKey(centerService => centerService.Id);
 
+            builder.Property(centerService => centerService.Id)
+                .HasColumnName("CenterServiceID");
             builder.Property(centerService => centerService.CenterId)
                 .HasColumnName("CenterID");
             builder.Property(centerService => centerService.ServiceId)
