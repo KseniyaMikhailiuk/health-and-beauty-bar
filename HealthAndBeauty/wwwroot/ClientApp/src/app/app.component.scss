@@ -1,10 +1,26 @@
 @import "colors.scss";
 
 :host {
-  background-color: $iron;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
   width: 100%;
+
   .sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  ::ng-deep .sidenav-content {
+    background-color: white ;
+  }
+
+  .sidenav {
+    padding: 20px;
+    width: 50vw;
     height: 100vh;
+    position: absolute;
   }
 }

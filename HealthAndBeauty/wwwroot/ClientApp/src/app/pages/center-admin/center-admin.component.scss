@@ -1,5 +1,19 @@
 .menu {
   display: flex;
+  width:80%;
   justify-content: space-around;
   align-items: center;
+  margin: auto;
+  border: 1px black solid;
+  height: 30px;
+
+  &__link {
+    text-decoration: underline;
+    color: black;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }

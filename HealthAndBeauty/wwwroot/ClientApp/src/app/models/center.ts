@@ -5,4 +5,5 @@ export default class Center {
   address: string;
   distance: number;
   rating: number;
+  description: string
 }

@@ -1,6 +1,13 @@
 <mat-sidenav-container class="sidenav-container">
-  <app-header></app-header>
-  <router-outlet></router-outlet>
+  <mat-sidenav #sidenav class="sidenav" mode="push">
+    <a routerLink="/admin/centers/1" (click)="sidenav.toggle()">admin</a>
+  </mat-sidenav >
+
+  <mat-sidenav-content class="sidenav-content">
+    <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
   <app-custom-overlay></app-custom-overlay>
 </mat-sidenav-container>
 

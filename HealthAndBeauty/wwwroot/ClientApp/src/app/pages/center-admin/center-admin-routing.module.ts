@@ -21,10 +21,6 @@ const routes: Routes = [
         {
           path: 'services',
           component: AdminCenterServicesComponent,
-        },
-        {
-          path: '**',
-          redirectTo: 'info'
         }
       ]
     }

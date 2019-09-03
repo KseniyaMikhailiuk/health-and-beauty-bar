@@ -1,4 +1,5 @@
 ﻿using HealthAndBeauty.BL.Contracts;
+using HealthAndBeauty.BL.Models;
 using HealthAndBeauty.ViewModels;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,12 @@ namespace HealthAndBeauty.Controllers
         public async Task<IActionResult> GetAllAsync()
         {
             return Ok((await _service.GetAllAsync()).Adapt<IReadOnlyCollection<CenterVM>>());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(CenterVM center)
+        {
+            return Ok(await _service.CreateAsync(center.Adapt<CenterModel>()));
         }
     }
 }

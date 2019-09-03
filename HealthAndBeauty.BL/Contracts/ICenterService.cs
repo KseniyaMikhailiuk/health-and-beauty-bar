@@ -7,5 +7,6 @@ namespace HealthAndBeauty.BL.Contracts
     public interface ICenterService
     {
         Task<IReadOnlyCollection<CenterModel>> GetAllAsync();
+        Task<int> CreateAsync(CenterModel center);
     }
 }

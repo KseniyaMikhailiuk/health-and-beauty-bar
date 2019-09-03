@@ -4,6 +4,7 @@ import { CenterAdminRoutingModule } from './center-admin-routing.module';
 import { CenterAdminComponent } from './center-admin.component';
 import { AdminCenterInfoComponent } from 'src/app/components/admin-center-info/admin-center-info.component';
 import { AdminCenterServicesComponent } from 'src/app/components/admin-center-services/admin-center-services.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { AdminCenterServicesComponent } from 'src/app/components/admin-center-se
   ],
   imports: [
     CommonModule,
-    CenterAdminRoutingModule
+    CenterAdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CenterAdminModule { }
