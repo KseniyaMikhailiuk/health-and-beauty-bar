@@ -1,13 +1,9 @@
 ﻿namespace HealthAndBeauty.ViewModels
 {
-    public class CenterVM
+    public class CenterTypeVM
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public string MainImageUrl { get; set; }
-
-        public int CenterTypeId { get; set; }
     }
 }

@@ -8,5 +8,7 @@ namespace HealthAndBeauty.BL.Contracts
     {
         Task<IReadOnlyCollection<CenterModel>> GetAllAsync();
         Task<int> CreateAsync(CenterModel center);
+        Task UpdateAsync(CenterModel center);
+        Task<CenterModel> GetByIdAsync(int id);
     }
 }

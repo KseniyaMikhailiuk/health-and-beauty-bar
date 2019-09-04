@@ -13,7 +13,9 @@ namespace HealthAndBeauty.DAL
         {
             services.AddScoped<ICenterRepository, CenterRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            
+            services.AddScoped<ICenterTypeRepository, CenterTypeRepository>();
+            services.AddScoped<ICenterServiceRepository, CenterServiceRepository>();
+
             var settings = new DALSettings(configuration);
             services.AddDbContext<HBContext>(options => 
                 options.UseSqlServer(settings.DefaultConnection, x => x.MigrationsHistoryTable("Umwa_MigrationHistory", "dbo"))

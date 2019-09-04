@@ -10,6 +10,8 @@ namespace HealthAndBeauty.BL
         {
             services.AddScoped<ICenterService, CenterService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICenterTypeService, CenterTypeService>();
+            services.AddScoped<ICenterServiceService, CenterServiceService>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HealthAndBeauty.DAL.Contracts;
 using HealthAndBeauty.DB.Entities;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,9 +17,28 @@ namespace HealthAndBeauty.DAL.Repositories
             _context = context;
         }
 
+        public async Task<int> CreateAsync(Center center)
+        {
+            _context.Centers.Add(center);
+            await _context.SaveChangesAsync();
+            return center.Id;
+        }
+
+        public async Task UpdateAsync(Center center)
+        {        
+            _context.Update(center);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IReadOnlyCollection<Center>> GetAllAsync()
         {
             return await _context.Centers.ToListAsync();
+        }
+
+        public async Task<Center> GetByIdAsync(int id)
+        {
+            return await _context.Centers.FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

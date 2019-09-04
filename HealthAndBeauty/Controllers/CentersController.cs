@@ -29,5 +29,17 @@ namespace HealthAndBeauty.Controllers
         {
             return Ok(await _service.CreateAsync(center.Adapt<CenterModel>()));
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync(CenterVM center)
+        {
+            return Ok(await _service.CreateAsync(center.Adapt<CenterModel>()));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            return Ok((await _service.GetByIdAsync(id)).Adapt<CenterVM>());
+        }
     }
 }

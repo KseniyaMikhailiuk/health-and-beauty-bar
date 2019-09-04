@@ -5,6 +5,7 @@ import { CenterAdminComponent } from './center-admin.component';
 import { AdminCenterInfoComponent } from 'src/app/components/admin-center-info/admin-center-info.component';
 import { AdminCenterServicesComponent } from 'src/app/components/admin-center-services/admin-center-services.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CenterAdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ]
 })
 export class CenterAdminModule { }

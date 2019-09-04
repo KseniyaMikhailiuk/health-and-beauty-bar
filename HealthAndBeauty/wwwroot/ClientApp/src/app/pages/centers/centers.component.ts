@@ -20,7 +20,7 @@ export class CentersComponent implements OnInit {
   }
 
   getCenters(): void {
-    this.centersService.getCenters()
+    this.centersService.getAll()
     .subscribe(serviceCenters =>
       this.serviceCenters = serviceCenters
     );
