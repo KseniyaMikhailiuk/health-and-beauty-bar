@@ -1,5 +1,7 @@
 ﻿using HealthAndBeauty.DAL.Contracts;
 using HealthAndBeauty.DAL.Repositories;
+using HealthAndBeauty.DB.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,9 @@ namespace HealthAndBeauty.DAL
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICenterTypeRepository, CenterTypeRepository>();
             services.AddScoped<ICenterServiceRepository, CenterServiceRepository>();
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<HBContext>();
 
             var settings = new DALSettings(configuration);
             services.AddDbContext<HBContext>(options => 

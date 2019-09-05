@@ -1,0 +1,23 @@
+<form class="form">
+  <div class="form__group">
+    <label class="form__label" for="firstName">FIRST NAME</label>
+    <input class="form__input" id="firstName" formControlName="firstName"/>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="lastName">LAST NAME</label>
+    <input class="form__input" id="lastName" formControlName="lastName"/>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="email">EMAIL</label>
+    <input class="form__input" id="email" formControlName="email"/>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="password">PASSWORD</label>
+    <input class="form__input" id="password" formControlName="password"/>
+  </div>
+
+
+  <div class="submit-button-container">
+    <button (click)="onAddClick()" class="submit-button">Register</button>
+  </div>
+</form>
