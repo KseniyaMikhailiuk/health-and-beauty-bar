@@ -18,6 +18,10 @@ namespace HealthAndBeauty.DB.Configurations
             builder.HasOne(c => c.CenterType)
                 .WithMany(ct => ct.Centers)
                 .HasForeignKey(c => c.CenterTypeId);
+
+            builder.HasMany(c => c.WorkingHours)
+                .WithOne(wh => wh.Center)
+                .HasForeignKey(c => c.CenterId);
         }
     }
 }

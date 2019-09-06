@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthorizationService } from 'src/app/services/authorization.service';
 
@@ -28,7 +28,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register(formValues) {
-    this.authorizationService.register(formValues);
+    this.authorizationService.register(formValues).subscribe(
+      () => alert('dsf')
+    );
   }
 
 }

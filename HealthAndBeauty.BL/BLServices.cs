@@ -1,4 +1,5 @@
-﻿using HealthAndBeauty.BL.Contracts;
+﻿using HealthAndBeauty.BL.Configuration;
+using HealthAndBeauty.BL.Contracts;
 using HealthAndBeauty.BL.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,9 @@ namespace HealthAndBeauty.BL
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICenterTypeService, CenterTypeService>();
             services.AddScoped<ICenterServiceService, CenterServiceService>();
+            services.AddScoped<IAccountService, AccountService>();
+
+            MapsterConfiguration.SetupMapsterAdapter();
         }
     }
 }

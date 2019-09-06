@@ -5,8 +5,8 @@ import { Register } from '../models/register';
 import { Login } from '../models/login';
 
 const routes = {
-  register: () => 'account/register',
-  login: () => 'account/login'
+  register: () => 'api/account/register',
+  login: () => 'api/account/login'
 }
 
 @Injectable({

@@ -1,34 +1,29 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using HealthAndBeauty.BL.Contracts;
 using HealthAndBeauty.BL.Models;
+using HealthAndBeauty.DAL.Contracts;
 using HealthAndBeauty.DB.Entities;
 using Mapster;
-using Microsoft.AspNetCore.Identity;
 
 namespace HealthAndBeauty.BL.Services
 {
     public class AccountService : IAccountService
-    {
-        private readonly UserManager<User> _userManager;
+{
+        private readonly IUserRepository _repository;
 
-        public AccountService(UserManager<User> userManager)
+        public AccountService(IUserRepository repository)
         {
-            _userManager = userManager;
+            _repository = repository;
         }
 
         public async Task LoginAsync(LoginModel user)
         {
+
         }
 
         public async Task RegisterAsync(RegisterModel registerModel)
         {
-            var result = await _userManager.CreateAsync(registerModel.Adapt<User>(), registerModel.Password);
-
-            if (!result.Succeeded)
-            {
-                throw new Exception();
-            }
+            await _repository.CreateAsync(registerModel.Adapt<User>());
         }
     }
 }

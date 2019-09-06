@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Umwa.DB;
 
 namespace HealthAndBeauty.DB.Migrations
 {
     [DbContext(typeof(HBContext))]
-    partial class HBContextModelSnapshot : ModelSnapshot
+    [Migration("20190906101912_RemoveIdentity")]
+    partial class RemoveIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,30 +112,6 @@ namespace HealthAndBeauty.DB.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Services");
-                });
-
-            modelBuilder.Entity("HealthAndBeauty.DB.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("UserID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<int>("GenderId");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("Salt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("HealthAndBeauty.DB.Entities.Center", b =>

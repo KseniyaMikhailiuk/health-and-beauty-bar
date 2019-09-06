@@ -1,4 +1,4 @@
-<form class="form">
+<form class="form" [formGroup]="registrationForm" (ngSubmit)="register(registrationForm.value)">
   <div class="form__group">
     <label class="form__label" for="firstName">FIRST NAME</label>
     <input class="form__input" id="firstName" formControlName="firstName"/>
@@ -18,6 +18,6 @@
 
 
   <div class="submit-button-container">
-    <button (click)="onAddClick()" class="submit-button">Register</button>
+    <button class="submit-button">Register</button>
   </div>
 </form>

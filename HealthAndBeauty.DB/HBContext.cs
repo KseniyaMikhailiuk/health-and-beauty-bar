@@ -1,11 +1,10 @@
 ﻿using HealthAndBeauty.DB.Configurations;
 using HealthAndBeauty.DB.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Umwa.DB
 {
-    public class HBContext : IdentityDbContext
+    public class HBContext : DbContext
     {
         public HBContext(DbContextOptions<HBContext> options)
             : base(options)
@@ -19,7 +18,9 @@ namespace Umwa.DB
             modelBuilder.ApplyConfiguration(new CenterServiceConfiguration());
             modelBuilder.ApplyConfiguration(new CenterTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ServiceConfiguration());
-
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new WorkingHoursConfiguration());
+            
             base.OnModelCreating(modelBuilder);
         }
 
@@ -28,5 +29,7 @@ namespace Umwa.DB
         public DbSet<Service> Services { get; set; }
         public DbSet<CenterService> CenterServices { get; set; }
         public DbSet<CenterType> CenterTypes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<WorkingHours> WorkingHours { get; set; }
     }
 }

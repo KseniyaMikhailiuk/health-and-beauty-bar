@@ -15,5 +15,7 @@ namespace HealthAndBeauty.DB.Entities
         public CenterType CenterType { get; set; }
 
         public ICollection<CenterService> CenterServices { get; set; }
+
+        public ICollection<WorkingHours> WorkingHours { get; set; }
     }
 }
