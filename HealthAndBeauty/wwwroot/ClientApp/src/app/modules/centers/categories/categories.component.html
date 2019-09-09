@@ -1,0 +1,22 @@
+<ul class="filters-list" *ngIf="services; else categoriesList">
+  <li class="filter-item" *ngFor="let service of services">
+      <mat-checkbox (change)="manageServiceFilter($event, service.id)">{{service.name}}</mat-checkbox>
+  </li>
+</ul>
+
+<ng-template #categoriesList>
+  <ul class="filters-list">
+    <li class="filter-item" *ngFor="let category of categories" (click)="showServices(category.id)">
+      {{category.name}}
+    </li>
+  </ul>
+</ng-template>
+
+<section class="action-buttons">
+    <div>
+      Discard
+    </div>
+    <div>
+      Apply
+    </div>
+  </section>

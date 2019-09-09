@@ -1,0 +1,54 @@
+.form {
+  padding: 20px;
+
+  &__group {
+    margin-top: 10px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 3px;
+    font-weight: bold;
+  }
+
+  &__input {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+.categories {
+  padding: 20px;
+
+  .category {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+
+    .services {
+      padding: 5px;
+      border-top: 1px black solid;
+
+      .service {
+        display: grid;
+        grid-template-columns:  2fr 1fr;
+      }
+    }
+  }
+}
+
+.submit-button {
+  background-color: #3BA150;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+}
+
+.submit-button-container {
+  margin: 0 0 0 auto;
+  width: 100px;
+}

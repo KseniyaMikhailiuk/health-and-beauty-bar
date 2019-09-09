@@ -1,0 +1,32 @@
+:host{
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .filters-list {
+    padding: 20px;
+    margin-bottom: auto;
+    .filter-item {
+      display:flex;
+      height: 30px;
+      align-items: center;
+      border-bottom: 0.5px gray solid;
+      font-size: 15px;
+      font-family: Open Sans,sans-serif;
+    }
+  }
+
+  ::ng-deep {
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+      background-color: violet;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+}
+

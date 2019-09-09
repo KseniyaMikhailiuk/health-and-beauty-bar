@@ -1,6 +1,6 @@
-﻿namespace HealthAndBeauty.DB.Entities
+﻿namespace HealthAndBeauty.BL.Models
 {
-    public class SaloonType
+    public class ServiceModel
     {
         public int Id { get; set; }
 

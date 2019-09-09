@@ -1,0 +1,55 @@
+<form *ngIf="isFormShown" class="form" [formGroup]="centerForm" (ngSubmit)="add(centerForm.value)">
+  <div class="form__group">
+    <mat-form-field>
+      <label class="form__label" for="name">CATEGORY</label>
+      <mat-select formControlName="categoryId">
+        <mat-option *ngFor="let category of categories" [value]="category.id" (click)="onCategorySelect(category.id)">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form__group">
+    <mat-form-field>
+      <label class="form__label" for="name">SERVICE</label>
+      <mat-select formControlName="serviceId">
+        <mat-option *ngFor="let service of services" [value]="service.id">
+          {{service.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="form__group">
+    <label class="form__label" for="price">PRICE</label>
+    <input class="form__input" id="price" formControlName="price"/>
+  </div>
+
+  <div class="form__group">
+    <label class="form__label" for="discount">DISCOUNT</label>
+    <input class="form__input" id="discount" formControlName="discount"/>
+  </div>
+
+  <button class="form__group submit-button" type="submit">Add</button>
+</form>
+
+<ul *ngIf="!isFormShown" class="categories">
+  <li class="category" *ngFor="let group of groupedServices">
+    {{group.name}}
+    <div class="services">
+      <div class="service" *ngFor="let centerService of group.services">
+        <div>
+          {{centerService.service.name}}
+        </div>
+        <div>
+          {{centerService.price}}
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div *ngIf="!isFormShown" class="submit-button-container">
+    <button (click)="onAddClick()" class="submit-button">Add</button>
+</div>

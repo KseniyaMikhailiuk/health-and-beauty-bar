@@ -1,0 +1,20 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="push">
+    <ul>
+      <li>
+        <a routerLink="/admin/centers/1" (click)="sidenav.toggle()">admin</a>
+      </li>
+      <li>
+        <a routerLink="/service-centers" (click)="sidenav.toggle()">centers</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<app-custom-overlay></app-custom-overlay>

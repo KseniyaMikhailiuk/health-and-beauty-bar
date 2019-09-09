@@ -1,0 +1,21 @@
+<section class="list-filters-bar">
+  <div class="list-filters-button">
+    Sort
+  </div>
+  <div class="list-filters-button" (click)="showFilters()">
+    Filter
+  </div>
+</section>
+
+<ul class="service-centers-list">
+  <li *ngFor="let serviceCenter of serviceCenters">
+    <article class="service-centers-list-detail">
+      <img src="{{serviceCenter.mainImageUrl}}"/>
+      <section class="service-centers-list-detail__desctiption">
+        <h4>{{serviceCenter.name}}</h4>
+        <p>{{serviceCenter.address}}</p>
+        <p>{{serviceCenter.distance}} km</p>
+      </section>
+    </article>
+  </li>
+</ul>
