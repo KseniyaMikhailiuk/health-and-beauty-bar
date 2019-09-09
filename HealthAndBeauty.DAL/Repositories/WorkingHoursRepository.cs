@@ -28,5 +28,12 @@ namespace HealthAndBeauty.DAL.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task CreateRangeAsync(WorkingHours[] workingHours)
+        {
+            _context.WorkingHours.AddRange(workingHours);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

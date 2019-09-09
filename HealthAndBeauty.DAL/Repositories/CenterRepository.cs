@@ -33,12 +33,18 @@ namespace HealthAndBeauty.DAL.Repositories
 
         public async Task<IReadOnlyCollection<Center>> GetAllAsync()
         {
-            return await _context.Centers.ToListAsync();
+            return await _context
+                .Centers
+                .Include(c => c.WorkingHours)
+                .ToListAsync();
         }
 
         public async Task<Center> GetByIdAsync(int id)
         {
-            return await _context.Centers.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context
+                .Centers
+                .Include(c => c.WorkingHours)
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

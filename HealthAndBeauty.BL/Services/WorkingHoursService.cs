@@ -26,5 +26,10 @@ namespace HealthAndBeauty.BL.Services
         {
             await _repository.UpdateRangeAsync(workingHours.Adapt<WorkingHours[]>());
         }
+
+        public async Task CreateRangeAsync(WorkingHoursModel[] workingHours)
+        {
+            await _repository.CreateRangeAsync(workingHours.Adapt<WorkingHours[]>());
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace HealthAndBeauty.ViewModels
+﻿using System.Collections.Generic;
+
+namespace HealthAndBeauty.ViewModels
 {
     public class CenterVM
     {
@@ -9,5 +11,7 @@
         public string MainImageUrl { get; set; }
 
         public int CenterTypeId { get; set; }
+
+        public IReadOnlyCollection<WorkingHoursVM> WorkingHours { get; set; }
     }
 }

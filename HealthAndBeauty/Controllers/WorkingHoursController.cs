@@ -31,10 +31,18 @@ namespace HealthAndBeauty.Controllers
             return Ok(workingHours.Adapt<IReadOnlyCollection<WorkingHoursVM>>());
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UpdateRangeAsync(WorkingHoursVM[] workingHours)
         {
             await _service.UpdateRangeAsync(workingHours.Adapt<WorkingHoursModel[]>());
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateRangeAsync(WorkingHoursVM[] workingHours)
+        {
+            await _service.CreateRangeAsync(workingHours.Adapt<WorkingHoursModel[]>());
 
             return Ok();
         }

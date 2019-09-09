@@ -6,6 +6,7 @@ namespace HealthAndBeauty.DAL.Contracts
 {
     public interface IWorkingHoursRepository
     {
+        Task CreateRangeAsync(WorkingHours[] workingHours);
         Task UpdateRangeAsync(WorkingHours[] workingHours);
         Task<IReadOnlyCollection<WorkingHours>> GetAllByCenterIdAsync(int centerId);
     }
