@@ -6,6 +6,7 @@ import { AdminCenterInfoComponent } from 'src/app/modules/center-admin/center-ad
 import { AdminCenterServicesComponent } from 'src/app/modules/center-admin/center-admin-services/center-admin-services.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { MatSelectModule } from '@angular/material/select';
     CenterAdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBq8mjwuE1zqXhlCIJOPnNV6wNy0iPoX8I'
+    })
   ]
 })
 export class CenterAdminModule { }

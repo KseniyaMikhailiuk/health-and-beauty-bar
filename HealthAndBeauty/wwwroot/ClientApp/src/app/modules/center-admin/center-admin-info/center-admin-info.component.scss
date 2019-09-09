@@ -26,4 +26,13 @@
     font-size: 20px;
     color: white;
   }
+
+  &__map {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+agm-map {
+  height: 300px;
 }
