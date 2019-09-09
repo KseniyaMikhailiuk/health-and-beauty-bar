@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Umwa.DB;
+using HealthAndBeauty.DB;
 
 namespace HealthAndBeauty.DAL.Repositories
 {

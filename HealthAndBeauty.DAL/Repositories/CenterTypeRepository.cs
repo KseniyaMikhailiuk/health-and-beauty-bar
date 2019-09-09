@@ -3,7 +3,7 @@ using HealthAndBeauty.DB.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Umwa.DB;
+using HealthAndBeauty.DB;
 
 namespace HealthAndBeauty.DAL.Repositories
 {

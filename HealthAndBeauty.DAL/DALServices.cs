@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Umwa.DB;
+using HealthAndBeauty.DB;
 
 namespace HealthAndBeauty.DAL
 {

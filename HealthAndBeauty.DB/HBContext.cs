@@ -2,7 +2,7 @@
 using HealthAndBeauty.DB.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Umwa.DB
+namespace HealthAndBeauty.DB
 {
     public class HBContext : DbContext
     {
