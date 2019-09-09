@@ -18,6 +18,7 @@ namespace HealthAndBeauty.DAL
             services.AddScoped<ICenterTypeRepository, CenterTypeRepository>();
             services.AddScoped<ICenterServiceRepository, CenterServiceRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IWorkingHoursRepository, WorkingHoursRepository>();
             
             var settings = new DALSettings(configuration);
             services.AddDbContext<HBContext>(options => 

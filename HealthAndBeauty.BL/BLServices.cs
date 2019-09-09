@@ -14,7 +14,8 @@ namespace HealthAndBeauty.BL
             services.AddScoped<ICenterTypeService, CenterTypeService>();
             services.AddScoped<ICenterServiceService, CenterServiceService>();
             services.AddScoped<IAccountService, AccountService>();
-
+            services.AddScoped<IWorkingHoursService, WorkingHoursService>();
+            
             MapsterConfiguration.SetupMapsterAdapter();
         }
     }

@@ -1,10 +1,10 @@
 ﻿using HealthAndBeauty.DAL.Contracts;
 using HealthAndBeauty.DB.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using HealthAndBeauty.DB;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthAndBeauty.DAL.Repositories
 {
@@ -17,24 +17,16 @@ namespace HealthAndBeauty.DAL.Repositories
             _context = context;
         }
 
-        public Task DeleteAsync(int centerId, int weekdayId)
+        public async Task<IReadOnlyCollection<WorkingHours>> GetAllByCenterIdAsync(int centerId)
         {
-            throw new NotImplementedException();
+            return await _context.WorkingHours.Where(wh => wh.CenterId == centerId).ToListAsync();
         }
 
-        public Task EditAsync(int centerId, int weekdayId)
+        public async Task UpdateRangeAsync(WorkingHours[] workingHours)
         {
-            throw new NotImplementedException();
-        }
+            _context.WorkingHours.UpdateRange(workingHours);
 
-        public Task<WorkingHours> GetAllByCenterIdAsync(int centerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateRangeAsync()
-        {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
     }
 }
