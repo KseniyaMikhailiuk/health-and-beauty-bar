@@ -19,7 +19,7 @@ const defaultValues = {
   templateUrl: './center-admin-services.component.html',
   styleUrls: ['./center-admin-services.component.scss']
 })
-export class AdminCenterServicesComponent implements OnInit {
+export class CenterAdminServicesComponent implements OnInit {
   centerForm: FormGroup;
 
   @Input() isFormShown: boolean = false;

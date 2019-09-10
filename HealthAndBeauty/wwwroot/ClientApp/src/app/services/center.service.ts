@@ -10,8 +10,13 @@ const routes = {
   create: () => 'api/centers/',
   update: id => `api/centers/${id}`,
   getById: id => `api/centers/${id}`,
+
   getServices: id => `api/centers/${id}/services`,
-  addService: centerId => `api/centers/${centerId}/services`
+  addService: centerId => `api/centers/${centerId}/services`,
+
+  getWorkingHours: id => `api/centers/${id}/working-hours`,
+  updateWorkingHours: id => `api/centers/${id}/working-hours`,
+  createWorkingHours: id => `api/centers/${id}/working-hours`
 }
 
 
@@ -63,5 +68,18 @@ export class CenterService {
 
   addService(centerService: CenterServiceModel.CenterService): Observable<any> {
     return this.httpClient.post(routes.addService(centerService.centerId), centerService)
+  }
+
+  getWorkingHours(id: number): Observable<any> {
+    return this.httpClient.get(routes.getWorkingHours(id))
+  }
+
+  updateWorkingHours(centerId: number, workingHours: CenterServiceModel.CenterService): Observable<any> {
+    return this.httpClient.put(routes.updateWorkingHours(centerId), workingHours)
+  }
+
+  createWorkingHours(centerId: number, workingHours: CenterServiceModel.CenterService): Observable<any> {
+    debugger;
+    return this.httpClient.post(routes.createWorkingHours(centerId), workingHours)
   }
 }

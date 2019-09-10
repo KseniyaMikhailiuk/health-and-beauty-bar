@@ -1,0 +1,25 @@
+<form class="form" [formGroup]="workingHoursForm">
+  <div class="timetable" formArrayName="weekdays">
+    <div *ngFor="let weekday of workingHoursForm.get('weekdays').controls; let day = index">
+      <div class="weekday" [formGroupName]="day">
+        <div class="form__label">
+          {{workingHoursForm.value.weekdays[day].name}}
+        </div>
+        <div>
+          <input [ngxTimepicker]="startTime" class="form__input" formControlName="startTime" [ngxTimepicker]="fullTime" [format]="24">
+          <ngx-material-timepicker #startTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
+        </div>
+        <div>
+          <input [ngxTimepicker]="endTime" class="form__input" formControlName="endTime" [ngxTimepicker]="fullTime" [format]="24">
+          <ngx-material-timepicker #endTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div *ngIf="!isCreateMode" class="submit-button-container">
+  <button (click)="updateWorkingHours(workingHoursForm.value)" class="submit-button">Update</button>
+</div>
+<div *ngIf="isCreateMode" class="submit-button-container">
+  <button (click)="createWorkingHours(workingHoursForm.value)" class="submit-button">Create</button>
+</div>
