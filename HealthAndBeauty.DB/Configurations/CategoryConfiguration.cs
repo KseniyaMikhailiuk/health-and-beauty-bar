@@ -12,6 +12,15 @@ namespace HealthAndBeauty.DB.Configurations
 
             builder.Property(categoty => categoty.Id)
                 .HasColumnName("CategotyID");
+
+            builder.HasData(new Category[]
+            {
+                new Category() { Id = 1, Name = "CategoryA" },
+                new Category() { Id = 2, Name = "CategoryB" },
+                new Category() { Id = 3, Name = "CategoryC" },
+                new Category() { Id = 4, Name = "CategoryD" },
+                new Category() { Id = 5, Name = "CategoryE" },
+            });
         }
     }
 }

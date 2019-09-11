@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminCenterInfoComponent } from './center-admin-info.component';
+import { CenterAdminInfoComponent } from './center-admin-info.component';
 
-describe('AdminCenterInfoComponent', () => {
-  let component: AdminCenterInfoComponent;
-  let fixture: ComponentFixture<AdminCenterInfoComponent>;
+describe('CenterAdminInfoComponent', () => {
+  let component: CenterAdminInfoComponent;
+  let fixture: ComponentFixture<CenterAdminInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminCenterInfoComponent ]
+      declarations: [ CenterAdminInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminCenterInfoComponent);
+    fixture = TestBed.createComponent(CenterAdminInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

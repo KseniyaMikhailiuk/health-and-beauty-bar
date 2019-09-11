@@ -1,4 +1,6 @@
-﻿namespace HealthAndBeauty.BL.Models
+﻿using System.Collections.Generic;
+
+namespace HealthAndBeauty.BL.Models
 {
     public class CenterModel
     {
@@ -9,5 +11,7 @@
         public string MainImageUrl { get; set; }
 
         public int CenterTypeId { get; set; }
+
+        public IReadOnlyCollection<WorkingHoursModel> WorkingHours { get; set; }
     }
 }

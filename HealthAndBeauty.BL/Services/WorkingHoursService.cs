@@ -1,26 +1,35 @@
 ﻿using HealthAndBeauty.BL.Contracts;
-using System;
+using HealthAndBeauty.BL.Models;
+using HealthAndBeauty.DAL.Contracts;
+using HealthAndBeauty.DB.Entities;
+using Mapster;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HealthAndBeauty.BL.Services
 {
     public class WorkingHoursService : IWorkingHoursService
     {
-        public Task DeleteAsync(int centerId, int weekdayId)
+        private readonly IWorkingHoursRepository _repository;
+
+        public WorkingHoursService(IWorkingHoursRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
-        public Task EditAsync(int centerId, int weekdayId)
+        public async Task<IReadOnlyCollection<WorkingHoursModel>> GetAllByCenterIdAsync(int centerId)
         {
-            throw new NotImplementedException();
+            return (await _repository.GetAllByCenterIdAsync(centerId)).Adapt<IReadOnlyCollection<WorkingHoursModel>>();
         }
 
-        public Task UpdateRangeAsync()
+        public async Task UpdateRangeAsync(WorkingHoursModel[] workingHours)
         {
-            throw new NotImplementedException();
+            await _repository.UpdateRangeAsync(workingHours.Adapt<WorkingHours[]>());
+        }
+
+        public async Task CreateRangeAsync(WorkingHoursModel[] workingHours)
+        {
+            await _repository.CreateRangeAsync(workingHours.Adapt<WorkingHours[]>());
         }
     }
 }

@@ -22,6 +22,13 @@ namespace HealthAndBeauty.DB.Configurations
             builder.HasMany(c => c.WorkingHours)
                 .WithOne(wh => wh.Center)
                 .HasForeignKey(c => c.CenterId);
+
+            builder.HasData(new Center[]
+            {
+                new Center(){ Id = 1, Name ="CenterA", CenterTypeId = 1, MainImageUrl = "https://picsum.photos/id/237/200/300"},
+                new Center(){ Id = 2, Name ="CenterB", CenterTypeId = 1, MainImageUrl = "https://picsum.photos/id/237/200/300"},
+                new Center(){ Id = 3, Name ="CenterC", CenterTypeId = 2, MainImageUrl = "https://picsum.photos/id/237/200/300"},
+            });
         }
     }
 }

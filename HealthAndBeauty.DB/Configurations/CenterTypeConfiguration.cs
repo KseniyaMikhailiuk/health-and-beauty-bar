@@ -12,6 +12,12 @@ namespace HealthAndBeauty.DB.Configurations
 
             builder.Property(centerType => centerType.Id)
                 .HasColumnName("CenterTypeID");
+
+            builder.HasData(new CenterType[]
+            {
+                new CenterType() { Id = 1, Name = "Beauty"},
+                new CenterType() { Id = 2, Name = "Medical"}
+            });
         }
     }
 }

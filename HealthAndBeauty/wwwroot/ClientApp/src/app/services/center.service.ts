@@ -4,14 +4,20 @@ import { Observable, of } from 'rxjs';
 
 import Center from '../models/center';
 import * as CenterServiceModel from '../models/center-service';
+import WorkingHours from '../models/working-hours';
 
 const routes = {
   getAll: () => 'api/centers/',
   create: () => 'api/centers/',
   update: id => `api/centers/${id}`,
   getById: id => `api/centers/${id}`,
+
   getServices: id => `api/centers/${id}/services`,
-  addService: centerId => `api/centers/${centerId}/services`
+  addService: centerId => `api/centers/${centerId}/services`,
+
+  getWorkingHours: id => `api/centers/${id}/working-hours`,
+  updateWorkingHours: id => `api/centers/${id}/working-hours`,
+  createWorkingHours: id => `api/centers/${id}/working-hours`
 }
 
 
@@ -36,21 +42,20 @@ export class CenterService {
     // { id: 20, name: 'Tornado', mainImageUrl: 'https://picsum.photos/id/237/500/300', address: 'пр-т. Победителей 84, Минск', distance: 5, rating: 4.5 }
   ];
 
-  getAll(): Observable<
-  Center[]> {
+  getAll(): Observable<Center[]> {
     return this.httpClient.get<Center[]>(routes.getAll());
   }
 
   create(center: Center): Observable<number> {
-    return this.httpClient.post<number>(routes.create(), center)
+    return this.httpClient.post<number>(routes.create(), center);
   }
 
   update(center: Center): Observable<any> {
-    return this.httpClient.put(routes.update(center.id), center)
+    return this.httpClient.put(routes.update(center.id), center);
   }
 
   getById(id: number): Observable<any> {
-    return this.httpClient.get(routes.getById(id))
+    return this.httpClient.get(routes.getById(id));
   }
 
   getFilteredLServiceCenters(filteres): Observable<Center[]> {
@@ -58,10 +63,23 @@ export class CenterService {
   }
 
   getServices(id: number): Observable<any> {
-    return this.httpClient.get(routes.getServices(id))
+    return this.httpClient.get(routes.getServices(id));
   }
 
   addService(centerService: CenterServiceModel.CenterService): Observable<any> {
-    return this.httpClient.post(routes.addService(centerService.centerId), centerService)
+    return this.httpClient.post(routes.addService(centerService.centerId), centerService);
+  }
+
+  getWorkingHours(id: number): Observable<any> {
+    return this.httpClient.get(routes.getWorkingHours(id));
+  }
+
+  updateWorkingHours(centerId: number, workingHours: CenterServiceModel.CenterService): Observable<any> {
+    return this.httpClient.put(routes.updateWorkingHours(centerId), workingHours);
+  }
+
+  createWorkingHours(centerId: number, workingHours: WorkingHours[]): Observable<any> {
+    debugger;
+    return this.httpClient.post(routes.createWorkingHours(centerId), workingHours);
   }
 }

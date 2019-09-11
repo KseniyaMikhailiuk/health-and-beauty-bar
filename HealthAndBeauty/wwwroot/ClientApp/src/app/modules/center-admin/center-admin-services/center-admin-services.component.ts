@@ -3,7 +3,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import Category from 'src/app/models/category';
 import { CenterService } from 'src/app/services/center.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { map, switchMap, takeUntil } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import Service from 'src/app/models/service';
 
@@ -19,7 +19,7 @@ const defaultValues = {
   templateUrl: './center-admin-services.component.html',
   styleUrls: ['./center-admin-services.component.scss']
 })
-export class AdminCenterServicesComponent implements OnInit {
+export class CenterAdminServicesComponent implements OnInit {
   centerForm: FormGroup;
 
   @Input() isFormShown: boolean = false;
