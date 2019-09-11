@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material';
 import { AuthorizationModule } from './modules/authorization/authorization.module';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthorizationModule } from './modules/authorization/authorization.modul
     MatIconModule,
     CenterAdminModule,
     CentersModule,
-    AuthorizationModule
+    AuthorizationModule,
+    SimpleNotificationsModule.forRoot()
   ],
   bootstrap: [AppComponent],
   entryComponents: [CategoriesComponent]

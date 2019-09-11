@@ -8,12 +8,14 @@ import { map, switchMap } from 'rxjs/operators';
 import WorkingHours from 'src/app/models/working-hours';
 import * as moment from 'moment';
 import * as datapicker from '../../../components/utils/time-picker-dark-theme'
+import { NotificationsService } from 'angular2-notifications';
+import { ChangeDetectorRef } from '@angular/core';
 
 const defaultValues:WorkingHours[] = [
-  { startTime: '0.00', endTime: '0.00', weekDayId: 1 }, { startTime: '0.00', endTime: '0.00', weekDayId: 2 },
-  { startTime: '0.00', endTime: '0.00', weekDayId: 3 }, { startTime: '0.00', endTime: '0.00', weekDayId: 4 },
-  { startTime: '0.00', endTime: '0.00', weekDayId: 5 }, { startTime: '0.00', endTime: '0.00', weekDayId: 6 },
-  { startTime: '0.00', endTime: '0.00', weekDayId: 0 }
+  { startTime: '0.00', endTime: '0.00', weekDayId: 1, isClosed: false }, { startTime: '0.00', endTime: '0.00', weekDayId: 2, isClosed: false },
+  { startTime: '0.00', endTime: '0.00', weekDayId: 3, isClosed: false }, { startTime: '0.00', endTime: '0.00', weekDayId: 4, isClosed: false },
+  { startTime: '0.00', endTime: '0.00', weekDayId: 5, isClosed: false }, { startTime: '0.00', endTime: '0.00', weekDayId: 6, isClosed: false },
+  { startTime: '0.00', endTime: '0.00', weekDayId: 0, isClosed: false }
 ]
 
 
@@ -32,7 +34,9 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private centerService: CenterService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notificationService: NotificationsService,
+    private cdr: ChangeDetectorRef
   ) {
     this.workingHoursForm = formBuilder.group({
       weekdays: this.formBuilder.array([])
@@ -61,20 +65,33 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
 
   updateWorkingHours(data) {
     this.centerService.updateWorkingHours(this.centerId, data)
+      .subscribe(
+        () => {
+          this.notificationService.success('Working hours are successfully apdated')
+          this.centerService
+            .getWorkingHours(this.centerId)
+            .subscribe((workingHours) => this.patch(this.reorderWeekdays(workingHours)))
+        },
+        () => { this.notificationService.error('Error on update') }
+      );
+  }
+
+  createWorkingHours(data) {
+    this.centerService.createWorkingHours(this.centerId, data)
       .subscribe(() => {
+        this.notificationService.success('Working hours are successfully created')
         this.centerService
           .getWorkingHours(this.centerId)
           .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
       });
   }
 
-  createWorkingHours(data) {
-    this.centerService.createWorkingHours(this.centerId, data)
-      .subscribe(() => {
-        this.centerService
-          .getWorkingHours(this.centerId)
-          .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
-      });
+  manageClosed(weekday: WorkingHours) {
+    let vacation = this.workingHours.find(wh => wh.weekDayId === weekday.weekDayId);
+    if (vacation) {
+      vacation.isClosed = !vacation.isClosed;
+    }
+    weekday.isClosed = !weekday.isClosed;
   }
 
   private patch(week: WorkingHours[]) {
@@ -87,13 +104,20 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
   private patchValues(weekday) {
     let st = moment(weekday.startTime, "HH:mm:ss").format("HH:mm");
     let end = moment(weekday.endTime, "HH:mm:ss").format("HH:mm");
-    return this.formBuilder.group({
+    let weekdayControl = this.formBuilder.group({
       startTime: [st],
       endTime: [end],
       name: [WeekDay[weekday.weekDayId]],
       weekDayId: weekday.weekDayId,
-      centerId: this.centerId
+      centerId: this.centerId,
+      isClosed: weekday.isClosed
     });
+    weekdayControl.controls.isClosed.valueChanges
+      .subscribe((value) => {
+        this.manageClosed(value.weekDayId);
+      })
+
+    return weekdayControl;
   }
 
   private reorderWeekdays(week: WorkingHours[]) : WorkingHours[] {

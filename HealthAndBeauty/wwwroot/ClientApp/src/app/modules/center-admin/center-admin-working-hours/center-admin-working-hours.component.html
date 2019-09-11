@@ -2,17 +2,22 @@
   <div class="timetable" formArrayName="weekdays">
     <div *ngFor="let weekday of workingHoursForm.get('weekdays').controls; let day = index">
       <div class="weekday" [formGroupName]="day">
-        <div class="form__label">
+        <div class="form__label" (click)="manageClosed(workingHoursForm.value.weekdays[day])">
           {{workingHoursForm.value.weekdays[day].name}}
         </div>
-        <div>
-          <input [ngxTimepicker]="startTime" class="form__input" formControlName="startTime" [ngxTimepicker]="fullTime" [format]="24">
-          <ngx-material-timepicker #startTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
+        <div *ngIf="workingHoursForm.value.weekdays[day].isClosed; else workingHours">
+          Closed
         </div>
-        <div>
-          <input [ngxTimepicker]="endTime" class="form__input" formControlName="endTime" [ngxTimepicker]="fullTime" [format]="24">
-          <ngx-material-timepicker #endTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
-        </div>
+        <ng-template #workingHours>
+          <div>
+            <input [ngxTimepicker]="startTime" class="form__input" formControlName="startTime" [ngxTimepicker]="fullTime" [format]="24">
+            <ngx-material-timepicker #startTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
+          </div>
+          <div>
+            <input [ngxTimepicker]="endTime" class="form__input" formControlName="endTime" [ngxTimepicker]="fullTime" [format]="24">
+            <ngx-material-timepicker #endTime [ngxMaterialTimepickerTheme]="darkTheme"></ngx-material-timepicker>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
