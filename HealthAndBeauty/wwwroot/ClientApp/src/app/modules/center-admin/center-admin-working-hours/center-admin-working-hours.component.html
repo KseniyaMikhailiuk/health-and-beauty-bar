@@ -18,8 +18,8 @@
   </div>
 </form>
 <div *ngIf="!isCreateMode" class="submit-button-container">
-  <button (click)="updateWorkingHours(workingHoursForm.value)" class="submit-button">Update</button>
+  <button (click)="updateWorkingHours(workingHoursForm.value.weekdays)" class="submit-button">Update</button>
 </div>
 <div *ngIf="isCreateMode" class="submit-button-container">
-  <button (click)="createWorkingHours(workingHoursForm.value)" class="submit-button">Create</button>
+  <button (click)="createWorkingHours(workingHoursForm.value.weekdays)" class="submit-button">Create</button>
 </div>

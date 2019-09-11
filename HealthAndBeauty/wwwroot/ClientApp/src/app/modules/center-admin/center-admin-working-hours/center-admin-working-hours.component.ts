@@ -60,9 +60,7 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
       })
     ).subscribe(workingHours => {
       if (workingHours.length){
-        workingHours.push(workingHours.pop());
-        this.workingHours = workingHours;
-        this.patch(workingHours);
+        this.patch(this.reorderWeekdays(workingHours));
       } else {
         this.isCreateMode = true;
         this.patch(defaultValues);
@@ -74,26 +72,55 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
   }
 
   updateWorkingHours(data) {
-    this.centerService.updateWorkingHours(this.centerId, data);
+    this.centerService.updateWorkingHours(this.centerId, data)
+      .subscribe(() => {
+        this.resetForm();
+        this.centerService
+          .getWorkingHours(this.centerId)
+          .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
+      });
   }
 
   createWorkingHours(data) {
-    this.centerService.createWorkingHours(this.centerId, data);
+    this.centerService.createWorkingHours(this.centerId, data)
+      .subscribe(() => {
+        this.resetForm();
+        this.centerService
+          .getWorkingHours(this.centerId)
+          .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
+      });
   }
 
-  private patch(array: WorkingHours[]) {
+  private patch(week: WorkingHours[]) {
     const control = <FormArray>this.workingHoursForm.get('weekdays');
-    array.forEach(x => {
-      control.push(this.patchValues(x))
+    control.clear();
+    week.forEach(weekday => {
+      control.push(this.patchValues(weekday))
     })
   }
-  private patchValues(x) {
-    let st = moment(x.startTime, "HH:mm:ss").format("HH:mm");
-    let end = moment(x.endTime, "HH:mm:ss").format("HH:mm");
+  private patchValues(weekday) {
+    let st = moment(weekday.startTime, "HH:mm:ss").format("HH:mm");
+    let end = moment(weekday.endTime, "HH:mm:ss").format("HH:mm");
     return this.formBuilder.group({
       startTime: [st],
       endTime: [end],
-      name: [WeekDay[x.weekDayId]]
-    })
+      name: [WeekDay[weekday.weekDayId]],
+      weekDayId: weekday.weekDayId,
+      centerId: this.centerId
+    });
+  }
+
+  private reorderWeekdays(week: WorkingHours[]) : WorkingHours[] {
+    let sunday = week.shift();
+    week.push(sunday);
+    this.workingHours = week;
+    return week;
+  }
+
+  private resetForm() {
+    this.workingHoursForm = this.formBuilder.group({
+      weekdays: this.formBuilder.array([])
+    });
+    this.workingHours = [];
   }
 }
