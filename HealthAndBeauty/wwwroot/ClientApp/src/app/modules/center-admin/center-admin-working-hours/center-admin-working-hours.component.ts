@@ -7,6 +7,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import WorkingHours from 'src/app/models/working-hours';
 import * as moment from 'moment';
+import * as datapicker from '../../../components/utils/time-picker-dark-theme'
 
 const defaultValues:WorkingHours[] = [
   { startTime: '0.00', endTime: '0.00', weekDayId: 1 }, { startTime: '0.00', endTime: '0.00', weekDayId: 2 },
@@ -22,20 +23,7 @@ const defaultValues:WorkingHours[] = [
   styleUrls: ['./center-admin-working-hours.component.scss']
 })
 export class CenterAdminWorkingHoursComponent implements OnInit {
-  darkTheme: NgxMaterialTimepickerTheme = {
-    container: {
-        bodyBackgroundColor: '#fff',
-        buttonColor: '#000'
-    },
-    dial: {
-        dialBackgroundColor: '#000',
-    },
-    clockFace: {
-        clockFaceBackgroundColor: '#555',
-        clockHandColor: '#7c8179',
-        clockFaceTimeInactiveColor: '#fff'
-    }
-  };
+  darkTheme: NgxMaterialTimepickerTheme = datapicker.getDarkTheme();
   private centerId: number;
   private workingHours: WorkingHours[];
   private workingHoursForm: FormGroup;
@@ -74,7 +62,6 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
   updateWorkingHours(data) {
     this.centerService.updateWorkingHours(this.centerId, data)
       .subscribe(() => {
-        this.resetForm();
         this.centerService
           .getWorkingHours(this.centerId)
           .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
@@ -84,7 +71,6 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
   createWorkingHours(data) {
     this.centerService.createWorkingHours(this.centerId, data)
       .subscribe(() => {
-        this.resetForm();
         this.centerService
           .getWorkingHours(this.centerId)
           .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
@@ -115,12 +101,5 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
     week.push(sunday);
     this.workingHours = week;
     return week;
-  }
-
-  private resetForm() {
-    this.workingHoursForm = this.formBuilder.group({
-      weekdays: this.formBuilder.array([])
-    });
-    this.workingHours = [];
   }
 }
