@@ -22,7 +22,7 @@ const defaultValues = {
   styleUrls: ['./center-admin-info.component.scss']
 })
 
-export class AdminCenterInfoComponent implements OnInit {
+export class CenterAdminInfoComponent implements OnInit {
   centerForm: FormGroup;
   centerId: number;
   center: Center;
