@@ -21,7 +21,7 @@
   </div>
 
   <div class="form__map">
-    <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+    <agm-map [latitude]="marker.lat" [longitude]="marker.lng" (mapClick)="mapClicked($event)">
       <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [markerDraggable]=true></agm-marker>
     </agm-map>
   </div>

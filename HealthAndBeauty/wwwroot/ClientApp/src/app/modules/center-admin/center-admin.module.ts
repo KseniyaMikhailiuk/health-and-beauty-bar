@@ -25,8 +25,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBq8mjwuE1zqXhlCIJOPnNV6wNy0iPoX8I'
-    })
-    NgxMaterialTimepickerModule,
+    }),
+    NgxMaterialTimepickerModule
   ]
 })
 export class CenterAdminModule { }

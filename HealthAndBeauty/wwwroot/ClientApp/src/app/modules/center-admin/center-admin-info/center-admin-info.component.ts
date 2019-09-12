@@ -6,8 +6,10 @@ import { CenterType } from 'src/app/models/center-type';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import Center from 'src/app/models/center';
-import { MouseEvent } from '@agm/core';
+import { MouseEvent, MapsAPILoader } from '@agm/core';
 import { MapMarker } from 'src/app/models/map-marker';
+import { google } from '@agm/core/services/google-maps-types';
+import { GeolocationService } from 'src/app/services/geolocation.service';
 
 const defaultValues = {
   name: '',
@@ -34,7 +36,8 @@ export class CenterAdminInfoComponent implements OnInit {
     private centerService: CenterService,
     private centerTypeService: CenterTypeService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private geoService: GeolocationService
   ) {
     this.centerForm = formBuilder.group(defaultValues);
     centerTypeService.getAll().subscribe(centerTypes => {
@@ -77,5 +80,12 @@ export class CenterAdminInfoComponent implements OnInit {
       lng: $event.coords.lng,
       draggable: true
     };
+    // this.geoService.geocodeAddress()
+    //   .subscribe((location: Location) => {
+    //     this.marker.lat = location.lat;
+    //     this.loading = false;
+    //     this.ref.detectChanges();
+    //   }
+    // );
   }
 }
