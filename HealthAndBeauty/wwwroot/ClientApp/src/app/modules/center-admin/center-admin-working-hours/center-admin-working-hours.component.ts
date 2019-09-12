@@ -83,7 +83,9 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
         this.centerService
           .getWorkingHours(this.centerId)
           .subscribe(workingHours => this.patch(this.reorderWeekdays(workingHours)));
-      });
+        },
+        () => { this.notificationService.error('Error on create') }
+      );
   }
 
   manageClosed(weekday: WorkingHours) {
@@ -91,7 +93,7 @@ export class CenterAdminWorkingHoursComponent implements OnInit {
     if (vacation) {
       vacation.isClosed = !vacation.isClosed;
     }
-    weekday.isClosed = !weekday.isClosed;
+    this.patch(this.workingHours);
   }
 
   private patch(week: WorkingHours[]) {

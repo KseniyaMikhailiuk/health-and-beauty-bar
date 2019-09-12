@@ -5,7 +5,7 @@
         <div class="form__label" (click)="manageClosed(workingHoursForm.value.weekdays[day])">
           {{workingHoursForm.value.weekdays[day].name}}
         </div>
-        <div *ngIf="workingHoursForm.value.weekdays[day].isClosed; else workingHours">
+        <div *ngIf="workingHoursForm.value.weekdays[day].isClosed; else workingHours" class="closed">
           Closed
         </div>
         <ng-template #workingHours>
