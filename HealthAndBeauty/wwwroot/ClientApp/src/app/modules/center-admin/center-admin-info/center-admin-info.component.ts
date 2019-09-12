@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CenterService } from 'src/app/services/center.service';
 import { CenterTypeService } from 'src/app/services/center-type.service';
 import { CenterType } from 'src/app/models/center-type';
-
 const defaultValues = {
   name: '',
   mainImageUrl: '',
@@ -27,6 +26,7 @@ export class CenterAdminInfoComponent implements OnInit {
     private centerService: CenterService,
     private centerTypeService: CenterTypeService,
     private formBuilder: FormBuilder
+
   ) {
     this.centerForm = formBuilder.group(defaultValues);
     centerTypeService.getAll().subscribe(centerTypes => {
